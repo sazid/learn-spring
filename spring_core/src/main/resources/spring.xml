@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-init-method="onInit" default-destroy-method="onDestroy">
+    <!--    <bean id="parentTriangle" class="com.example.demo.Triangle">-->
+    <!--        <property name="pointA" ref="pointA"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="triangle" class="com.example.demo.Triangle" parent="parentTriangle">-->
+    <!--        <property name="pointB" ref="pointB"/>-->
+    <!--        <property name="pointC" ref="pointC"/>-->
+    <!--    </bean>-->
+
+    <!--    <bean id="triangle1" class="com.example.demo.Triangle" parent="parentTriangle">-->
+    <!--        <property name="pointB" ref="pointB"/>-->
+    <!--        <property name="pointC" ref="pointC"/>-->
+    <!--    </bean>-->
+
+    <!--        Load from pointsconfig.properties-->
+    <bean id="pointA" class="com.example.demo.Point">
+        <constructor-arg value="${pointA.pointX}"/>
+        <constructor-arg value="${pointA.pointY}"/>
+    </bean>
+
+    <alias name="pointA" alias="center"/>
+
+    <bean id="pointB" class="com.example.demo.Point">
+        <constructor-arg value="-20"/>
+        <constructor-arg value="0"/>
+    </bean>
+
+    <!--    <bean id="pointC" class="com.example.demo.Point">-->
+    <!--        <constructor-arg value="20"/>-->
+    <!--        <constructor-arg value="0"/>-->
+    <!--    </bean>-->
+
+<!--    <bean id="circle" class="com.example.demo.Circle">-->
+<!--        &lt;!&ndash;        <property name="center" ref="pointA"/>&ndash;&gt;-->
+<!--        <property name="radius" value="2.5"/>-->
+<!--    </bean>-->
+
+    <!--    <bean class="com.example.demo.DisplayNameBeanPostProcessor" />-->
+
+    <!--    <bean class="com.example.demo.MyBeanFactoryPostProcessor"/>-->
+
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="location" value="classpath:pointsconfig.properties"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+</beans>
